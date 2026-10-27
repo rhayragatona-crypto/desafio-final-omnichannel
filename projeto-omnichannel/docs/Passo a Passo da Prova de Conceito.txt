@@ -1,0 +1,39 @@
+ Passo a Passo da Prova de Conceito NoSQL na Nuvem
+
+ 1. Objetivo da Etapa
+
+Realizei uma Prova de Conceito (PoC) utilizando o MongoDB Atlas (banco de dados NoSQL baseado em documentos na nuvem).
+
+
+Para armazenar dados semiestruturados (como logs de navegação de um e-commerce) de forma flexível, sem a necessidade de configurar permissões complexas de administrador no sistema operativo local.
+
+
+
+ 2. Estrutura do Script (`04_nosql_poc.js`)
+
+Dividi o script desenvolvido em quatro partes principais:
+
+1. Seleção do Banco de Dados: Utilizei o comando `use('omnichannel_nosql')` para criar e conectar ao banco voltado ao projeto omnichannel.
+
+
+2. Incluí o comando `.drop()` para limpar a coleção caso precisasse de reexecutar o script, garantindo um ambiente limpo.
+
+
+3. Inserção em Massa (`insertMany`): Criei documentos JSON flexíveis simulando o comportamento dos clientes (como visualizações de produtos, pesquisas e adição de itens ao carrinho), contendo atributos variados (dispositivo, IP, horários, detalhes específicos da ação).
+
+
+4. Executei o comando `.find({})` para consultar e comprovar que os dados foram salvos corretamente na nuvem.
+
+
+ 3. O Problema Encontrado (Erro de Execução)
+
+O que ocorreu: Durante a execução, colei por engano os comandos em JavaScript/NoSQL numa ferramenta conectada a um banco de dados relacional tradicional (MariaDB).
+
+
+O resultado: O servidor retornou o erro de sintaxe SQL (`Error Code: 1064`), pois bancos relacionais tradicionais não compreendem a sintaxe de documentos do MongoDB.
+
+
+
+4. A Solução Aplicada
+
+Correção: Direcionei o script para a ferramenta correta (o MongoDB Playground dentro da extensão MongoDB for VS Code ou o ambiente nativo do MongoDB Atlas), garantindo que a conexão à nuvem processasse a sintaxe NoSQL adequadamente.
